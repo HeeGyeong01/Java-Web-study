@@ -27,7 +27,7 @@ public class Salary {
             taxrate = 0.02;
         } else {
             taxrate = 0.01;
-        }
+        }// taxrate = total>=5000000 ? 0.03 : total>=3000000 ? 0.02 : 0.01;
 
         double tax = total * taxrate;
         double Salary = total - tax;
