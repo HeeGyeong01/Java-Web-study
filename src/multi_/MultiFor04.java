@@ -1,17 +1,23 @@
 package multi_;
 
+//3중 for문으로 구구단 출력.
 public class MultiFor04 {
     public static void main(String[] args) {
-        for (int block = 2; block <= 8; block += 3) {
-            for (int i = 1; i <= 9; i++) {
-                for (int dan = block; dan <= 9; dan++) {
-                    if (dan % 3 == 2) {
-                        System.out.println();
+        for (int i = 2; i <= 8; i += 3) {
+
+            for (int j = 1; j <= 9; j++) {
+
+                for (int a = 0; a <= 2; a++) {
+                    if(i + a >= 10) {
+                        break;
                     }
-                    System.out.printf("%d*%d=%d\t", dan, i, dan * i);
+                    System.out.printf("%d*%d=%d\t", i + a, j, (i + a) * j);
                 }
+                System.out.println();
             }
+            System.out.println();
         }
+
 
     }
 }
