@@ -29,6 +29,11 @@ public class StringMain02 {
                 }
             }
 
+            //while((index = str.indexOf(which, index)) != -1) {
+            //           count++;
+            //           index = index + which.length();
+            //        }//while
+
             if(count > 0) {
                 System.out.println(changedStr);
                 System.out.println(count + "개를 치환했습니다.\n");
