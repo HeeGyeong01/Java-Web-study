@@ -1,7 +1,5 @@
 package class__;
 
-import java.sql.SQLOutput;
-
 public class Fruit {
     private String pum;
     private int jan, feb, mar, total;

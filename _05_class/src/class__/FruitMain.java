@@ -3,6 +3,10 @@ package class__;
 public class FruitMain {
     public static void main(String[] args){
 
+        /* 아래 코드 이 한 줄로 축약할 수 있다.
+        Fruit[] arr = {new Fruit("사과", 100, 80, 75),
+            new Fruit("포도", 30, 25, 10),
+            new Fruit("딸기", 25, 30, 90)}; */
         Fruit[] f = new Fruit[3];
         f[0] = new Fruit("사과", 100, 80, 75);
         f[1] = new Fruit("포도", 30, 25, 10);

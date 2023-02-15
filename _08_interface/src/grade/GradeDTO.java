@@ -17,14 +17,11 @@ public class GradeDTO {
         total = kor + eng + math;
         avg = (double)total / 3     ;
     }
+
     //getter, setter
 
     public int getNo() {
         return no;
-    }
-
-    public void setNo(int no) {
-        this.no = no;
     }
 
     public int getKor() {
@@ -55,10 +52,6 @@ public class GradeDTO {
         return total;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
     public String getName() {
         return name;
     }
@@ -71,12 +64,11 @@ public class GradeDTO {
         return avg;
     }
 
-    public void setAvg(double avg) {
-        this.avg = avg;
-    }
 
     @Override
     public String toString(){
-        return no +"\t"+name+"\t" + kor + "\t" + eng + "\t" + math + "\t" + total + "\t" + avg;
+        return String.format("%d\t%4s\t%4d\t%4d\t%4d\t%4d\t%4.2f\n",
+            no, name, kor,  eng,  math, total, avg);
     }
+
 }

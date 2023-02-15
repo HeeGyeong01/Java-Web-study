@@ -8,7 +8,7 @@ public class GradeList implements Grade{
 
         for(GradeDTO gradeDTO: arrayList){
             //arrayList.get(0)은 첫번째에 저장되어있는 GradeDTO 객체의 주소임.
-            System.out.printf("%d\t%s\t%d\t%d\t%d\t%d\t%f",
+            System.out.printf("%d\t%4s\t%4d\t%4d\t%4d\t%4d\t%4.2f\n",
                 gradeDTO.getNo(),
                 gradeDTO.getName(),
                 gradeDTO.getKor(),

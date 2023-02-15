@@ -31,6 +31,8 @@ public class GradeUpdate implements Grade{
                 arr.setEng(eng);
                 arr.setMath(math);
 
+                arr.calc();
+
                 System.out.println("수정하였습니다");
 
 
@@ -40,9 +42,6 @@ public class GradeUpdate implements Grade{
         if(check == false){ //입력한 번호가 없을 때
             System.out.println("잘못된 번호입니다");
         }
-
-
-
 
 
     }
