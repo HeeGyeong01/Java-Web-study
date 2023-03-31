@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userSQL">
+
+  <!--  xml 안에서는 풀쿼리 네임으로 적어줘야 되나 config에서
+  <typeAlias type="main.user.bean.UserDTO" alias="user"/> 이렇게 지정해줘서
+  user로 쓸 수 있다.-->
+  <insert id="write" parameterType="user">
+    insert into usertable values(#{name}, #{id}, #{pwd})
+  </insert>
+
+  <!-- 만약 UserDTO의 필드명과 오라클DB의 컬럼명이 다른 경우에
+  아래 resultMap 태그를 이용하여 매핑해주면 된다.-->
+  <resultMap id="userResult" type="user" >
+    <result column="NAME" property="name"/>
+    <result column="ID" property="id"/>
+    <result column="PWD" property="pwd"/>
+  </resultMap>
+
+
+
+  <!-- resultMap 사용-->
+  <!--<select id="getUserList" resultType="main.user.bean.UserDTO">
+  이 문장과 같은 결과를 반환한다.-->
+  <select id="getUserList" resultMap="userResult">
+    select * from usertable
+  </select>
+
+  <select id="getUser" parameterType="String" resultType="user">
+    select * from usertable where id=#{id}
+  </select>
+
+  <update id="update" parameterType="java.util.Map">
+    update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
+  </update>
+
+  <delete id="delete" parameterType="String">
+    delete from usertable where id=#{id}
+  </delete>
+
+  <select id="search" parameterType="java.util.Map" resultType="user">
+    select * from usertable where ${columnName} LIKE '%' || #{value} || '%'
+
+    <!-- if문 사용-->
+<!--    <if test="columnName == 'name'">-->
+<!--      name LIKE '%'||#{value}||'%'-->
+<!--    </if>-->
+<!--    <if test="columnName == 'id'">-->
+<!--      id LIKE '%'||#{value}||'%'-->
+<!--    </if>-->
+
+    <!--XML문법에서의 if-else문 -->
+<!--    <choose>-->
+<!--      <when test="columnName == 'name'">-->
+<!--        name LIKE '%'||#{value}||'%'-->
+<!--      </when>-->
+<!--      <otherwise>-->
+<!--        id LIKE '%'||#{value}||'%'-->
+<!--      </otherwise>-->
+<!--    </choose>-->
+  </select>
+
+
+
+
+
+</mapper>
