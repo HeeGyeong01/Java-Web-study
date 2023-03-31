@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardSQL">
+
+  <insert id="boardWrite" parameterType="java.util.Map">
+    insert into BOARD(seq, id, name, email, subject, content, ref)
+    values(seq_board.NEXTVAL, #{id}, #{name}, #{email},
+    #{subject}, #{content}, seq_board.CURRVAL)
+  </insert>
+
+
+  <select id="getBoardList" parameterType="java.util.Map" resultType="board">
+   <![CDATA[
+    select * from (select rownum rn, tt.* from
+    (select * from board order by ref desc, step asc) TT)
+    where rn>=#{startNum} and rn <= #{endNum}
+      ]]>
+<!--    CDATA로 감싸는 대신 between #{startNum} and #{endNum}으로 쓸 수 있다.-->
+  </select>
+
+
+  <select id="getTotalA" resultType="int">
+    SELECT COUNT(*) FROM BOARD
+  </select>
+
+
+  <select id="getBoard" parameterType="int" resultType="board">
+    select * from BOARD where seq = #{seq}
+  </select>
+
+<!--      select * from (select rownum rn, tt.* from (-->
+<!--      select * from BOARD where ${columnName} LIKE '%' || #{value} || '%'-->
+<!--      order by ref desc, step asc) TT)-->
+<!--      where rn>=#{startNum} and rn <= #{endNum}-->
+  <select id="search" parameterType="java.util.Map" resultType="board">
+    <![CDATA[
+      select * from (select rownum rn, tt.* from (
+      select * from BOARD where ${columnName} LIKE '%' || #{value} || '%'
+      order by ref desc, step asc) TT)
+      where rn>=#{startNum} and rn <= #{endNum}
+      ]]>
+  </select>
+
+  <select id="searchSize" parameterType="java.util.Map" resultType="int">
+    SELECT COUNT(*) FROM BOARD where ${columnName} LIKE '%' || #{value} || '%'
+  </select>
+
+
+</mapper>

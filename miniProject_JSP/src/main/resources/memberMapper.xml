@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberSQL">
+
+  <insert id="memberWrite" parameterType="member">
+    insert into MEMBER values(#{name}, #{id}, #{pwd}, #{gender}, #{email1}, #{email2},
+    #{tel1}, #{tel2}, #{tel3}, #{zipcode}, #{addr1}, #{addr2}, sysdate)
+  </insert>
+
+
+  <select id="memberLogin" parameterType="java.util.Map" resultType="member">
+    select name, email1, email2 from MEMBER where id=#{id} and pwd=#{pwd}
+  </select>
+
+
+  <select id="getMember" parameterType="String" resultType="member">
+    select * from MEMBER where id=#{id}
+  </select>
+
+
+  <update id="memberUpdate" parameterType="member">
+    update MEMBER set name=#{name}, pwd=#{pwd}  gender=#{gender},
+    email1 = #{email1}, email2 = #{email2},
+    tel1 = #{tel1}, tel2 = #{tel2}, tel3 = #{tel3},
+    zipcode = #{zipcode}, addr1 = #{addr1}, addr2 = #{addr2}
+    where id=#{id}
+  </update>
+
+
+
+  <select id="isExistPwd" parameterType="java.util.Map" resultType="member">
+    select * from MEMBER where id=#{id} and pwd=#{pwd}
+  </select>
+
+  <select id="isExistId" parameterType="String" resultType="member">
+    select * from MEMBER where id=#{id}
+  </select>
+
+
+  <delete id="memberDelete" parameterType="String">
+    delete from MEMBER where id=#{id}
+  </delete>
+
+
+</mapper>
