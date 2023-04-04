@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1 onmouseover="showResult()" onmouseout="hideResult()" style="border: 1px solid red;">
+  10 + 50 = <span id="question">?</span>
+</h1>
+<p>결과를 보시려면 수식 위에 마우스를 올리세요</p>
+
+<script>
+  function sum(x, y){
+    let z = x+y;
+    return z;
+  }
+
+  function showResult(){
+    let result = sum(10, 50);
+    let myTag = document.getElementById("question");
+
+    myTag.innerHTML = "<font color='red'>" + result + "</font>";
+  }
+
+  function hideResult(){
+    let myTag = document.getElementById("question");
+
+    myTag.innerHTML = "?";
+  }
+</script>
+</body>
+</html>

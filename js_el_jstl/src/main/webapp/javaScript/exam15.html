@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+<h1>10 + 50 = <span id="question">?</span> </h1>
+<input type="button" value="결과보기" onclick="printResult()"/>
+
+
+<script>
+  function sum(x, y){
+    let z = x+y;
+    return z;
+  }
+  function printResult(){
+    let result = sum(10, 50);
+    let myTag = document.getElementById("question");
+
+    myTag.innerHTML = "<font color='red'>" + result + "</font>";
+  }
+
+
+</script>
+
+</body>
+</html>
