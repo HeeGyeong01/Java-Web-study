@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    h3, li{
+      color: skyblue;
+    }
+    div> div> strong{ /*자식 셀렉터*/
+      background: deeppink;
+    }
+    ul strong{ /*후손 셀렉터*/
+      color: purple;
+    }
+    h3:first-letter{/* 가상 클래스 - 첫번째 문자를 선택*/
+      color: red;
+    }
+    li:hover{/*가상 클래스 - 마우스가 올라갔을 때 */
+      background: yellow;
+    }
+    ::selection{/* 가상 요소 - 마우스로 드래그하면 글자색이 빨강으로 변한다*/
+      color: red;
+    }
+  </style>
+</head>
+<body class="main">
+<h3>웹 프로그래밍</h3>
+<hr>
+<div>
+  <div>2학기 <strong>학습 내용</strong>입니다.</div>
+  <ul id="list">
+    <li><span>HTML5</span></li>
+    <li><strong>CSS</strong></li>
+    <li>JavaScript</li>
+  </ul>
+  <div class="warning">60점 이하는 F</div>
+</div>
+
+</body>
+</html>
